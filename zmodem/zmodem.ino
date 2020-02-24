@@ -126,9 +126,10 @@ V2.00
 */
 
 #include <SdFat.h>
+#define USE_SDIO 1
 #include <SdFatUtil.h>
 
-SdFat sd;
+SdFatSdioEX sd;
 
 #ifdef SFMP3_SHIELD
 #include <SFEMP3Shield.h>
@@ -217,7 +218,7 @@ void setup()
 
   //Initialize the SdCard.
 //DSERIALprintln(F("About to initialize SdCard"));
-  if(!sd.begin(SD_SEL, SPI_FULL_SPEED)) sd.initErrorHalt(&DSERIAL);
+  if(!sd.begin()) sd.initErrorHalt(&DSERIAL);
   // depending upon your SdCard environment, SPI_HALF_SPEED may work better.
 //DSERIALprintln(F("About to change directory"));
   if(!sd.chdir("/", true)) sd.errorHalt(F("sd.chdir"));
@@ -438,6 +439,3 @@ void loop(void)
 #endif
   }
 }
-
-
-

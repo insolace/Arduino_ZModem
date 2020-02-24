@@ -14,7 +14,7 @@ From: http://stackoverflow.com/questions/2607853/why-prototype-is-used-header-fi
 
 #include <SdFat.h>
 
-extern SdFat sd;
+extern SdFatSdioEX sd;
 
 #include <string.h>
 
